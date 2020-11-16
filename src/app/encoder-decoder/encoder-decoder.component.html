@@ -1,0 +1,18 @@
+<a routerLink="/"  mdbBtn class="back" mdbWavesEffect>< Main</a> 
+<mdb-card>
+    <mdb-card-body>
+      <mdb-card-title>
+        <h4>Encode/Decode</h4>
+      </mdb-card-title>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input mdbInput type="text" id="word" class="form-control" [(ngModel)]="word" placeholder="type the word here">
+        </div>
+        <div class="actions form-group col-md-12">
+            <button type="button" (click)="encoder()" mdbBtn id="encode" mdbWavesEffect>Encode</button>
+            <button type="button" (click)="decoder()" mdbBtn id="decode" mdbWavesEffect>Decode</button>
+        </div>
+        <h4 *ngIf="encodedWord || decodedWord">Your results are ready: <mdb-badge>{{encodedWord ||decodedWord}}</mdb-badge></h4>
+    </div>
+    </mdb-card-body>
+  </mdb-card>

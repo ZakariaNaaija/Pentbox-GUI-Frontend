@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body,html{
+    padding:20px;
+    background-color: #9ccc9c;
+}
+
+.back{
+    background-color: #2b5329;
+    color:white !important;
+
+}

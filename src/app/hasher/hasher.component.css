@@ -1,0 +1,27 @@
+mdb-card{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-group{
+    margin:10px auto;
+   
+}
+
+.actions{
+    text-align:center;
+    color:white;
+}
+
+#hasher{
+    background-color: #649568;
+}
+mdb-badge{
+    background-color: #0e6b0e;
+}
+
+
+h4{
+    overflow: auto;
+
+}

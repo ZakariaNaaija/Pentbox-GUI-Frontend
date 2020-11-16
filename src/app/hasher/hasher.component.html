@@ -1,0 +1,24 @@
+<a routerLink="/"  mdbBtn class="back" mdbWavesEffect>< Main</a> 
+
+<mdb-card>
+    <mdb-card-body>
+      <mdb-card-title>
+        <h4>Hashage</h4>
+      </mdb-card-title>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <input mdbInput type="text" id="word" class="form-control" [(ngModel)]="word" placeholder="type the word here">      
+        </div>
+        <div class="form-group col-md-6">
+            <select [(ngModel)]="algorithm" class="browser-default custom-select">
+              <option selected>Select Algorithm</option>
+              <option *ngFor="let algorithm of algorithms" [value]="algorithm">{{algorithm}}</option>
+            </select>
+          </div>
+        <div class="actions form-group col-md-12">
+            <button type="button" mdbBtn id="hasher" (click)="hasher()" mdbWavesEffect>Hasher</button>
+        </div>
+        <h4 *ngIf="hashedWord">Your results are ready: <mdb-badge>{{hashedWord}}</mdb-badge></h4>
+    </div>
+    </mdb-card-body>
+  </mdb-card>
