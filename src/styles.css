@@ -11,3 +11,47 @@ body,html{
     color:white !important;
 
 }
+
+.nav-item {
+  background-color: #2b5329;
+
+}
+a.nav-link {
+  color:white !important;
+}
+
+a.nav-link.active {
+  background-color: #54a04d!important;
+}
+
+
+
+.form-group :focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(15, 190, 38, 0.699);
+}
+
+
+#submitButton{
+  background-color: #2b5329;
+  color:white;
+}
+
+.progress-bar.indeterminate {
+  position: relative;
+  animation: progress-indeterminate 3s linear infinite;
+}
+
+@keyframes progress-indeterminate {
+   from { left: -25%; width: 25%; }
+   to { left: 100%; width: 25%;}
+}
+
+
+.alert{
+  width: 100%;
+  text-align: center;
+}
+
+.output {
+  background-color: yellow;
+}

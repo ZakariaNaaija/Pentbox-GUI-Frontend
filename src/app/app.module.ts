@@ -10,7 +10,11 @@ import { PasswordCrackerComponent } from './password-cracker/password-cracker.co
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BadgeModule, IconsModule } from 'angular-bootstrap-md'
+import { BadgeModule, IconsModule } from 'angular-bootstrap-md';
+import { SymmetricComponent } from './symmetric/symmetric.component';
+import { AsymmetricComponent } from './asymmetric/asymmetric.component';
+import { SymmetricEncryptionComponent } from './symmetric/symmetric-encryption/symmetric-encryption.component';
+import { SymmetricDecryptionComponent } from './symmetric/symmetric-decryption/symmetric-decryption.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { BadgeModule, IconsModule } from 'angular-bootstrap-md'
     EncoderDecoderComponent,
     HasherComponent,
     PasswordCrackerComponent,
-    MainComponent
+    MainComponent,
+    SymmetricComponent,
+    AsymmetricComponent,
+    SymmetricEncryptionComponent,
+    SymmetricDecryptionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,7 @@ import { BadgeModule, IconsModule } from 'angular-bootstrap-md'
     ButtonsModule,
     FormsModule,
     HttpClientModule
-    
+
 
   ],
   providers: [HttpClientModule],

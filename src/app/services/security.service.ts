@@ -28,7 +28,15 @@ export class SecurityService {
   cracker(hash:string,type:string,algorithm): Observable<any>{
     this.routeEndpoint="crack/"+type;
     return this.http.post<any>(environment.baseURL + this.routeEndpoint, {message:hash,algorithm:algorithm });
+  }
 
-    
+  symEncrypt(message: string, algorithm: string, passphrase: string): Observable<any> {
+    this.routeEndpoint = 'symetrique/chiffrer';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{message : message, algorithm: algorithm, password: passphrase})
+  }
+
+  symDecrypt(message: string, passphrase: string): Observable<any> {
+    this.routeEndpoint = 'symetrique/dechiffrer';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{encrypted : message, password: passphrase})
   }
 }

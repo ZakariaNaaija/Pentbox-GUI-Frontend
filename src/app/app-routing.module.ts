@@ -1,3 +1,5 @@
+import { SymmetricComponent } from './symmetric/symmetric.component';
+import { AsymmetricComponent } from './asymmetric/asymmetric.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EncoderDecoderComponent } from './encoder-decoder/encoder-decoder.component';
@@ -10,6 +12,8 @@ const routes: Routes = [
   {path:"encoder-decoder",component:EncoderDecoderComponent},
   {path:"password-cracker",component:PasswordCrackerComponent},
   {path:"hasher",component:HasherComponent},
+  {path:"symmetric-encryption",component:SymmetricComponent},
+  {path:"asymmetric-encryption",component:AsymmetricComponent},
   {path:"",component:MainComponent},
   {path:"**",component:MainComponent}
 
