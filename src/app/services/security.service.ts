@@ -37,6 +37,36 @@ export class SecurityService {
 
   symDecrypt(message: string, passphrase: string): Observable<any> {
     this.routeEndpoint = 'symetrique/dechiffrer';
-    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{encrypted : message, password: passphrase})
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{encrypted : message, password: passphrase});
+  }
+
+  genKeys(passphrase: string, algorithm: string): Observable<any> {
+    this.routeEndpoint = 'asymetrique/genkeys';
+    return this.http.post<any>(environment.baseURL + this.routeEndpoint, {passphrase: passphrase, algorithm: algorithm});
+  }
+
+  importKey(fingerprint: string): Observable<any> {
+    this.routeEndpoint= 'asymetrique/import';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{fingerprint: fingerprint});
+  }
+
+  asymEncrypt(message: string, publicKey: string): Observable<any> {
+    this.routeEndpoint = 'asymetrique/chiffrer';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{message: message, recipient_public_key_data: publicKey});
+  }
+
+  asymDecrypt(message: string, privateKey: string, passphrase: string): Observable<any> {
+    this.routeEndpoint = 'asymetrique/dechiffrer';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{encrypted: message, local_private_key_data: privateKey, passphrase: passphrase})
+  }
+
+  sign(message: string, privateKey: string, passphrase: string,): Observable<any> {
+    this.routeEndpoint= 'asymetrique/sign';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{message: message, passphrase: passphrase, local_private_key_data: privateKey});
+  }
+
+  verify(encrypted: string, signer_public_key: string): Observable<any> {
+    this.routeEndpoint = 'asymetrique/verify';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{encrypted,signer_public_key});
   }
 }

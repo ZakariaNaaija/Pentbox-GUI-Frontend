@@ -15,6 +15,13 @@ import { SymmetricComponent } from './symmetric/symmetric.component';
 import { AsymmetricComponent } from './asymmetric/asymmetric.component';
 import { SymmetricEncryptionComponent } from './symmetric/symmetric-encryption/symmetric-encryption.component';
 import { SymmetricDecryptionComponent } from './symmetric/symmetric-decryption/symmetric-decryption.component';
+import { GenKeysComponent } from './asymmetric/gen-keys/gen-keys.component';
+import { ListKeysComponent } from './asymmetric/list-keys/list-keys.component';
+import { ImportKeysComponent } from './asymmetric/import-keys/import-keys.component';
+import { AsymmetricEncryptionComponent } from './asymmetric/asymmetric-encryption/asymmetric-encryption.component';
+import { AsymmetricDecryptionComponent } from './asymmetric/asymmetric-decryption/asymmetric-decryption.component';
+import { SignComponent } from './asymmetric/sign/sign.component';
+import { VerifyComponent } from './asymmetric/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,14 @@ import { SymmetricDecryptionComponent } from './symmetric/symmetric-decryption/s
     SymmetricComponent,
     AsymmetricComponent,
     SymmetricEncryptionComponent,
-    SymmetricDecryptionComponent
+    SymmetricDecryptionComponent,
+    GenKeysComponent,
+    ListKeysComponent,
+    ImportKeysComponent,
+    AsymmetricEncryptionComponent,
+    AsymmetricDecryptionComponent,
+    SignComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,

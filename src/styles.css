@@ -53,5 +53,14 @@ a.nav-link.active {
 }
 
 .output {
-  background-color: yellow;
+  background-color: yellow!important;
+}
+
+textArea {
+  text-align: left!important
+}
+
+.form {
+  padding-left:10%;
+  padding-right:10%
 }

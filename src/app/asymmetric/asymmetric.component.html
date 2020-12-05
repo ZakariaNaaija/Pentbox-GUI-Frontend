@@ -1,1 +1,58 @@
-<p>asymmetric works!</p>
+<a routerLink="/"  mdbBtn class="back" mdbWavesEffect>< Main</a>
+
+<mdb-card>
+  <ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist" (click)="choose($event.target.name)">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-gen-tab" data-toggle="pill" href="#pills-gen" role="tab" name="1"
+        aria-controls="pills-gen" aria-selected="true">Generate Keys</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link " id="pills-import-tab" data-toggle="pill" href="#pills-import" role="tab" name="2"
+        aria-controls="pills-import" aria-selected="true">Import Keys</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link " id="pills-list-tab" data-toggle="pill" href="#pills-list" role="tab" name="3"
+        aria-controls="pills-list" aria-selected="true">List Keys</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " id="pills-encryption-tab" data-toggle="pill" href="#pills-encryption" role="tab" name="4"
+        aria-controls="pills-encryption" aria-selected="true">Encrypt</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" id="pills-decryption-tab" data-toggle="pill" href="#pills-decryption" role="tab" name="5"
+        aria-controls="pills-decryption" aria-selected="false">Decrypt</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" id="pills-sign-tab" data-toggle="pill" href="#pills-sign" role="tab" name="6"
+        aria-controls="pills-sign" aria-selected="false">Sign</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" id="pills-verify-tab" data-toggle="pill" href="#pills-verify" role="tab" name="7"
+        aria-controls="pills-verify" aria-selected="false">Verify</a>
+    </li>
+  </ul>
+  <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-gen" role="tabpanel" aria-labelledby="pills-gen-tab">
+      <app-gen-keys></app-gen-keys>
+    </div>
+    <div class="tab-pane fade show " id="pills-import" role="tabpanel" aria-labelledby="pills-import-tab">
+      <app-import-keys></app-import-keys>
+    </div>
+    <div class="tab-pane fade show " id="pills-list" role="tabpanel" aria-labelledby="pills-list-tab">
+      <app-list-keys *ngIf="choice==3"></app-list-keys>
+    </div>
+    <div class="tab-pane fade show " id="pills-encryption" role="tabpanel" aria-labelledby="pills-encryption-tab">
+      <app-asymmetric-encryption></app-asymmetric-encryption>
+    </div>
+    <div class="tab-pane fade" id="pills-decryption" role="tabpanel" aria-labelledby="pills-decryption-tab">
+      <app-asymmetric-decryption></app-asymmetric-decryption>
+    </div>
+    <div class="tab-pane fade show " id="pills-sign" role="tabpanel" aria-labelledby="pills-sign-tab">
+      <app-sign></app-sign>
+    </div>
+    <div class="tab-pane fade show " id="pills-verify" role="tabpanel" aria-labelledby="pills-verify-tab">
+      <app-verify></app-verify>
+    </div>
+  </div>
+
+</mdb-card>

@@ -6,7 +6,7 @@
     <div class="form-group">
       <label for="message">Message :</label>
 
-      <input
+      <textarea
         mdbInput
         type="text"
         id="message"
@@ -17,7 +17,8 @@
         #messageInput="ngModel"
         required
         [disabled]="submitted"
-      />
+        rows=15
+      ></textarea>
     </div>
 
     <div
@@ -52,14 +53,14 @@
 
     <div class="d-flex justify-content-center">
       <button
-        type="button"
+        type="submit"
         mdbBtn
         id="submitButton"
         (click)="decrypt()"
         mdbWavesEffect
         [disabled]="form.invalid||submitted"
       >
-        Encrypt
+        Decrypt
       </button>
     </div>
 
@@ -71,11 +72,11 @@
       Error : {{errorMessage}}
     </div>
 
-    <div *ngIf="result" class="alert alert-success">
+    <div *ngIf="result&&result!='passphrase wrong'" class="alert alert-success">
       Message Decrypted Successfully:
       Encrypted Message:
       <div class="output">
-        {{message}}
+        <textarea rows=15 class="form-control output" readonly>{{message}}</textarea>
        </div>
       Decrypted message:
       <div class="output">
@@ -85,6 +86,10 @@
       <div class="output">
         {{passphrase}}
       </div>
+    </div>
+
+    <div *ngIf="result&&result=='passphrase wrong'" class="alert alert-success">
+      Wrong passphrase used
     </div>
   </form>
 </mdb-card-body>

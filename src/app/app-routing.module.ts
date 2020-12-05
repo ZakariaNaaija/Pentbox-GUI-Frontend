@@ -12,8 +12,8 @@ const routes: Routes = [
   {path:"encoder-decoder",component:EncoderDecoderComponent},
   {path:"password-cracker",component:PasswordCrackerComponent},
   {path:"hasher",component:HasherComponent},
-  {path:"symmetric-encryption",component:SymmetricComponent},
-  {path:"asymmetric-encryption",component:AsymmetricComponent},
+  {path:"symmetric",component:SymmetricComponent},
+  {path:"asymmetric",component:AsymmetricComponent},
   {path:"",component:MainComponent},
   {path:"**",component:MainComponent}
 

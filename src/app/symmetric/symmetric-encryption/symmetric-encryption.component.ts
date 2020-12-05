@@ -16,7 +16,7 @@ export class SymmetricEncryptionComponent implements OnInit {
 
   chosenAlgorithm = '';
 
-  passphrase = '';
+  passphrase;
 
   submitted = false;
 

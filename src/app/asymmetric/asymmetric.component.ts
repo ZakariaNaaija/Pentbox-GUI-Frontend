@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsymmetricComponent implements OnInit {
 
+  choice = 1;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  choose(choice : number) {
+    this.choice=choice
   }
 
 }
