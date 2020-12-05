@@ -1,0 +1,69 @@
+<mdb-card-body>
+  <mdb-card-title>
+    <h4>Import Public Key</h4>
+  </mdb-card-title>
+  <form class="form" #form="ngForm" (ngSubmit)="!alreadyExists && onSubmit()">
+    <div class="form-group">
+      <label for="passphrase">Passphrase :</label>
+
+      <input
+        mdbInput
+        type="text"
+        id="fingerprint"
+        class="form-control"
+        [(ngModel)]="fingerprint"
+        placeholder="Enter the fingerprint of the public key to import"
+        name="fingerprint"
+        #fingerprintInput="ngModel"
+        required
+        [disabled]="submitted"
+        (input)="checkFingerprint($event.target.value)"
+      />
+    </div>
+
+    <div
+      class="alert alert-danger"
+      *ngIf="fingerprintInput.touched && fingerprintInput.invalid"
+    >
+      Please Enter the fingerprint
+    </div>
+
+    <div class="alert alert-danger" *ngIf="alreadyExists">
+      This fingerprint already exists
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        mdbBtn
+        id="submitButton"
+        mdbWavesEffect
+        [disabled]="form.invalid||submitted||alreadyExists"
+      >
+        Import
+      </button>
+    </div>
+    <div *ngIf="submitted" class="progress" style="position: relative;">
+      <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      Error : {{errorMessage}}
+    </div>
+
+    <div *ngIf="success&&!submitted" class="alert alert-success">
+      Public Key Imported Successfully: <br>
+      Fingerprint:
+      <div class="output">
+       {{fingerprint}}
+      </div>
+      Public Key :
+      <div class="output">
+        {{publicKey}}
+      </div>
+    </div>
+  </form>
+
+
+</mdb-card-body>

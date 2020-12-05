@@ -1,0 +1,96 @@
+<mdb-card-body>
+  <mdb-card-title>
+    <h4>Verify Signed Message</h4>
+  </mdb-card-title>
+  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()">
+    <div class="form-group">
+      <label for="message">Signed Message :</label>
+
+      <textarea
+        mdbInput
+        type="text"
+        id="message"
+        class="form-control"
+        [(ngModel)]="message"
+        placeholder="Enter the signed message here"
+        name="message"
+        #messageInput="ngModel"
+        required
+        [disabled]="submitted"
+        rows=15
+      ></textarea>
+    </div>
+
+    <div
+      class="alert alert-danger"
+      *ngIf="messageInput.touched && messageInput.invalid"
+    >
+      Please Enter the signed message
+    </div>
+
+
+    <div class="form-group">
+      <label for="fingerprint">Fingerprint :</label>
+      <input
+        mdbInput
+        type="text"
+        class="form-control"
+        placeholder="type the fingerprint of the public key"
+        id="fingerprint"
+        name="fingerprint"
+        ngModel
+        #fingerprintInput="ngModel"
+        [disabled]="submitted"
+        required
+        (input)="changeFingerprint($event.target.value)"
+      />
+    </div>
+
+    <div
+    class="alert alert-danger"
+    *ngIf="fingerprintInput.touched && fingerprintInput.invalid && fingerprintInput.errors.required">
+    Please Enter the fingerprint
+  </div>
+
+  <div class="alert alert-danger"
+  *ngIf="fingerprintInput.touched && fingerprintInput.valid &&fingerprint==null">
+    This fingerprint doesn't exist in your keyring
+  </div>
+
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        mdbBtn
+        id="submitButton"
+        mdbWavesEffect
+        [disabled]="form.invalid||submitted||!fingerprint"
+      >
+        Verify
+      </button>
+    </div>
+    <div *ngIf="submitted" class="progress" style="position: relative;">
+      <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      Error : {{errorMessage}}
+    </div>
+
+    <div *ngIf="success&&result==true" class="alert alert-success">
+      This message is valid and has been signed by the private key corresponding to the fingerprint:
+      <div class="output">
+        {{fingerprint}}
+      </div>
+    </div>
+
+    <div *ngIf="success&&result==false" class="alert alert-danger">
+      The message has not been signed by the private key corresponding to the fingerprint:
+      <div class="output">
+        {{fingerprint}}
+      </div>
+    </div>
+  </form>
+
+
+</mdb-card-body>

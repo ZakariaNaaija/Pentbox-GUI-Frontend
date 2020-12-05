@@ -1,0 +1,126 @@
+<mdb-card-body>
+  <mdb-card-title>
+    <h4>Sign message</h4>
+  </mdb-card-title>
+  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()">
+    <div class="form-group">
+      <label for="message">Message :</label>
+
+      <input
+        mdbInput
+        type="text"
+        id="message"
+        class="form-control"
+        [(ngModel)]="message"
+        placeholder="Enter the message to sign here"
+        name="message"
+        #messageInput="ngModel"
+        required
+        [disabled]="submitted"
+        rows=13
+      />
+
+      <div
+      class="alert alert-danger"
+      *ngIf="messageInput.touched && messageInput.invalid"
+    >
+      Please Enter the message to sign
+    </div>
+
+    </div>
+
+
+
+
+    <div class="form-group">
+      <label for="fingerprint">Fingerprint :</label>
+      <input
+        mdbInput
+        type="text"
+        class="form-control"
+        placeholder="type the fingerprint of the private key to be used"
+        id="fingerprint"
+        name="fingerprint"
+        ngModel
+        #fingerprintInput="ngModel"
+        [disabled]="submitted"
+        required
+        (input)="changeFingerprint($event.target.value)"
+      />
+    </div>
+
+    <div
+    class="alert alert-danger"
+    *ngIf="fingerprintInput.touched && fingerprintInput.invalid && fingerprintInput.errors.required">
+    Please Enter the fingerprint
+  </div>
+
+  <div class="alert alert-danger"
+  *ngIf="fingerprintInput.touched && fingerprintInput.valid &&fingerprint==null">
+    You don't have the private key corresponding to this fingerprint
+  </div>
+
+  <div class="form-group">
+    <label for="message">Passphrase :</label>
+
+    <input
+      mdbInput
+      type="text"
+      id="passphrase"
+      class="form-control"
+      [(ngModel)]="passphrase"
+      placeholder="Enter the passphrase"
+      name="passphrase"
+      #passphraseInput="ngModel"
+      required
+      [disabled]="submitted"
+    />
+
+    <div
+    class="alert alert-danger"
+    *ngIf="passphraseInput.touched && passphraseInput.invalid"
+  >
+    Please Enter the passphrase
+  </div>
+
+  </div>
+
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        mdbBtn
+        id="submitButton"
+        mdbWavesEffect
+        [disabled]="form.invalid||submitted||!fingerprint"
+      >
+        Sign
+      </button>
+    </div>
+    <div *ngIf="submitted" class="progress" style="position: relative;">
+      <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      Error : {{errorMessage}}
+    </div>
+
+    <div *ngIf="result&&result!='passphrase wrong'" class="alert alert-success">
+      Message Signed Successfully: <br>
+      Signed Message:
+      <div class="output">
+       <textarea rows=17 class="form-control output" readonly>{{result}}</textarea>
+      </div>
+      Fingerprint used :
+    <div class="output">
+      {{fingerprint}}
+    </div>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="result&&result=='passphrase wrong'">
+      Wrong passphrase used
+    </div>
+  </form>
+
+
+</mdb-card-body>

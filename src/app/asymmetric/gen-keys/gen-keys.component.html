@@ -1,0 +1,88 @@
+<mdb-card-body>
+  <mdb-card-title>
+    <h4>Key Generation</h4>
+  </mdb-card-title>
+  <form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="passphrase">Passphrase :</label>
+
+      <input
+        mdbInput
+        type="text"
+        id="passphrase"
+        class="form-control"
+        [(ngModel)]="passphrase"
+        placeholder="Enter the passphrase to be used in the keys generation"
+        name="passphrase"
+        #passphraseInput="ngModel"
+        required
+        [disabled]="submitted"
+      />
+    </div>
+
+    <div
+      class="alert alert-danger"
+      *ngIf="passphraseInput.touched && passphraseInput.invalid"
+    >
+      Please Enter the passphrase
+    </div>
+
+    <div class="form-group">
+      <label for="algorithm">Encryption Algorithm :</label>
+      <select
+        [(ngModel)]="chosenAlgorithm"
+        class="browser-default custom-select"
+        required
+        name="algorithm"
+        #algorithmInput="ngModel"
+        id="algorithm"
+        [disabled]="submitted"
+      >
+        <option value="" selected>Select Encryption Algorithm</option>
+        <option *ngFor="let algorithm of algorithms" [value]="algorithm">
+          {{ algorithm }}
+        </option>
+      </select>
+    </div>
+
+    <div
+      class="alert alert-danger"
+      *ngIf="algorithmInput.touched && algorithmInput.invalid"
+    >
+      Please choose the Algorithm you want to use
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button
+        type="submit"
+        mdbBtn
+        id="submitButton"
+        mdbWavesEffect
+        [disabled]="form.invalid||submitted"
+      >
+        Generate
+      </button>
+    </div>
+    <div *ngIf="submitted" class="progress" style="position: relative;">
+      <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
+    </div>
+
+    <div *ngIf="errorMessage&&!submitted" class="alert alert-danger">
+      Error : {{errorMessage}}
+    </div>
+
+    <div *ngIf="success&&!submitted" class="alert alert-success">
+      Keys Generated Successfully: <br>
+      Fingerprint:
+      <div class="output">
+       {{fingerPrint}}
+      </div>
+      Public Key :
+      <textarea class="form-control output" readonly rows=20>{{publicKey}}</textarea>
+      Private Key (Make sure to keep it safe and private):
+    <textarea readonly class="form-control output" rows=37>{{privateKey}}</textarea>
+    </div>
+  </form>
+
+
+</mdb-card-body>
