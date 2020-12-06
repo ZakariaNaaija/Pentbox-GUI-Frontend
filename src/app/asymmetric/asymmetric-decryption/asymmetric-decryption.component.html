@@ -65,7 +65,7 @@
 
     <input
       mdbInput
-      type="text"
+      type="password"
       id="passphrase"
       class="form-control"
       [(ngModel)]="passphrase"
@@ -110,18 +110,10 @@
       <div class="output">
         {{algorithm}}
       </div>
-      Encrypted Message:
-      <div class="output">
-       <textarea rows=15 class="form-control output" readonly>{{message}}</textarea>
-      </div>
       Decrypted message:
       <div class="output">
         {{result}}
       </div>
-      Fingerprint used :
-    <div class="output">
-      {{fingerprint}}
-    </div>
     </div>
 
     <div class="alert alert-danger" *ngIf="result&&result=='passphrase wrong'">

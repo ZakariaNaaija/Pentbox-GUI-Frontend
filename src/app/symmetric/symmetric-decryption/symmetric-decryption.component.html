@@ -32,7 +32,7 @@
       <label for="passphrase">Passphrase :</label>
       <input
         mdbInput
-        type="text"
+        type="password"
         class="form-control"
         [(ngModel)]="passphrase"
         placeholder="type the passphrase used in the encryption"
@@ -77,17 +77,9 @@
       <div class="output">
         {{algorithm}}
       </div>
-      Encrypted Message:
-      <div class="output">
-        <textarea rows=15 class="form-control output" readonly>{{message}}</textarea>
-       </div>
       Decrypted message:
       <div class="output">
         {{result}}
-      </div>
-      Passphrase used:
-      <div class="output">
-        {{passphrase}}
       </div>
     </div>
 

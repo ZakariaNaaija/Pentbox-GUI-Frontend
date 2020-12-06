@@ -52,10 +52,6 @@
     <div class="output">
      {{fingerprint}}
     </div>
-    Public Key :
-    <div class="output">
-      {{publicKey}}
-    </div>
   </div>
   <div *ngIf="success&&!submitted&&fingerprint=='Bad Public Key'" class="alert alert-danger">
     {{fingerprint}}

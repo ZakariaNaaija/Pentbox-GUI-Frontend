@@ -56,7 +56,7 @@
       <label for="passphrase">Passphrase :</label>
       <input
         mdbInput
-        type="text"
+        type="password"
         class="form-control"
         [(ngModel)]="passphrase"
         placeholder="type the passphrase to be used (optional)"
@@ -88,17 +88,9 @@
 
     <div *ngIf="result" class="alert alert-success">
       Message Encrypted Successfully: <br>
-      Message:
-      <div class="output">
-       {{message}}
-      </div>
       Encrypted message:
       <textarea readonly class="form-control output" rows=15>{{result}}
       </textarea>
-      Passphrase used (Make sure to keep it safe and private):
-    <div class="output">
-      {{passphrase}}
-    </div>
     </div>
   </form>
 
