@@ -1,8 +1,8 @@
 <mdb-card-body>
-  <mdb-card-title>
-    <h4>Asymmetric Encryption</h4>
+  <mdb-card-title id="title">
+    <h2 id="title">Asymmetric Decryption</h2>
   </mdb-card-title>
-  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()">
+  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()" (input)="success=false">
     <div class="form-group">
       <label for="message">Encrypted Message :</label>
 
@@ -107,6 +107,9 @@
 
     <div *ngIf="result&&result!='passphrase wrong'" class="alert alert-success">
       Message Decrypted Successfully: <br>
+      <div class="output">
+        {{algorithm}}
+      </div>
       Encrypted Message:
       <div class="output">
        <textarea rows=15 class="form-control output" readonly>{{message}}</textarea>

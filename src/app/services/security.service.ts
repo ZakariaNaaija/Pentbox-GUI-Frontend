@@ -47,7 +47,12 @@ export class SecurityService {
 
   importKey(fingerprint: string): Observable<any> {
     this.routeEndpoint= 'asymetrique/import';
-    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{fingerprint: fingerprint});
+    return this.http.get<any>(environment.baseURL+this.routeEndpoint+'?fingerprint='+fingerprint);
+  }
+
+  importOwnKey(publicKey: string): Observable<any> {
+    this.routeEndpoint= 'asymetrique/import';
+    return this.http.post<any>(environment.baseURL+this.routeEndpoint,{public: publicKey})
   }
 
   asymEncrypt(message: string, publicKey: string): Observable<any> {

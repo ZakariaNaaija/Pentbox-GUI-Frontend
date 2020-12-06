@@ -42,8 +42,13 @@ export class StorageService {
   }
 
   importKey(fingerprint:string, publicKey: string) {
-    localStorage.setItem(fingerprint, JSON.stringify({'publicKey':publicKey}));
-    this.addFingerprint(fingerprint);
+    if (localStorage.getItem(fingerprint)==null) {
+      localStorage.setItem(fingerprint, JSON.stringify({'publicKey':publicKey}));
+      this.addFingerprint(fingerprint);
+    }
+    else {
+      localStorage.setItem(fingerprint, JSON.stringify({'publicKey':publicKey}));
+    }
 
   }
 

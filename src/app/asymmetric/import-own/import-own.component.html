@@ -1,0 +1,63 @@
+<form class="form" #form="ngForm" (ngSubmit)="form.valid&&onSubmit()" (input)="success=false">
+  <h4>Import Your own Public Key</h4>
+  <div class="form-group">
+    <label for="publicKey">Public Key :</label>
+
+    <textarea
+      mdbInput
+      type="text"
+      id="publicKey"
+      class="form-control"
+      [(ngModel)]="publicKey"
+      placeholder="Enter the public key to import"
+      name="publicKey"
+      #publicKeyInput="ngModel"
+      required
+      [disabled]="submitted"
+      rows="20"
+    ></textarea>
+  </div>
+
+  <div
+    class="alert alert-danger"
+    *ngIf="publicKeyInput.touched && publicKeyInput.invalid"
+  >
+    Please Enter the public key
+  </div>
+
+
+
+  <div class="d-flex justify-content-center">
+    <button
+      type="submit"
+      mdbBtn
+      id="submitButton"
+      mdbWavesEffect
+      [disabled]="form.invalid||submitted"
+    >
+      Import
+    </button>
+  </div>
+  <div *ngIf="submitted" class="progress" style="position: relative;">
+    <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    Error : {{errorMessage}}
+  </div>
+
+  <div *ngIf="success&&!submitted&&fingerprint!='Bad Public Key'" class="alert alert-success">
+    Public Key Imported Successfully: <br>
+    Fingerprint:
+    <div class="output">
+     {{fingerprint}}
+    </div>
+    Public Key :
+    <div class="output">
+      {{publicKey}}
+    </div>
+  </div>
+  <div *ngIf="success&&!submitted&&fingerprint=='Bad Public Key'" class="alert alert-danger">
+    {{fingerprint}}
+  </div>
+</form>

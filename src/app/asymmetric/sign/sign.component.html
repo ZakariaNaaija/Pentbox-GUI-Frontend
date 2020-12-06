@@ -1,8 +1,8 @@
 <mdb-card-body>
   <mdb-card-title>
-    <h4>Sign message</h4>
+    <h2 id="title">Sign message</h2>
   </mdb-card-title>
-  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()">
+  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()" (input)="success=false">
     <div class="form-group">
       <label for="message">Message :</label>
 

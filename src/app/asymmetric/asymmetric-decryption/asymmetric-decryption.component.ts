@@ -15,6 +15,8 @@ export class AsymmetricDecryptionComponent implements OnInit {
 
   passphrase = '';
 
+  algorithm = '';
+
   submitted = false;
 
   success = false;
@@ -35,6 +37,7 @@ export class AsymmetricDecryptionComponent implements OnInit {
     this.securityService.asymDecrypt(this.message,this.storageService.getPrivateKey(this.fingerprint),this.passphrase).subscribe(
       data => {
         this.result = data.result;
+        this.algorithm = data.algorithm;
       },
       error => {this.errorMessage = error.message},
       () => {this.submitted= false; this.success = true;}

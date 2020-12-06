@@ -1,6 +1,6 @@
 <mdb-card-body>
   <mdb-card-title>
-    <h4>Symmetric Decryption</h4>
+    <h2 id="title">Symmetric Decryption</h2>
   </mdb-card-title>
   <form class="form" #form="ngForm">
     <div class="form-group">
@@ -74,6 +74,9 @@
 
     <div *ngIf="result&&result!='passphrase wrong'" class="alert alert-success">
       Message Decrypted Successfully:
+      <div class="output">
+        {{algorithm}}
+      </div>
       Encrypted Message:
       <div class="output">
         <textarea rows=15 class="form-control output" readonly>{{message}}</textarea>
@@ -88,7 +91,7 @@
       </div>
     </div>
 
-    <div *ngIf="result&&result=='passphrase wrong'" class="alert alert-success">
+    <div *ngIf="result&&result=='passphrase wrong'" class="alert alert-danger">
       Wrong passphrase used
     </div>
   </form>

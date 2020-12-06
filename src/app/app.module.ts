@@ -22,6 +22,8 @@ import { AsymmetricEncryptionComponent } from './asymmetric/asymmetric-encryptio
 import { AsymmetricDecryptionComponent } from './asymmetric/asymmetric-decryption/asymmetric-decryption.component';
 import { SignComponent } from './asymmetric/sign/sign.component';
 import { VerifyComponent } from './asymmetric/verify/verify.component';
+import { ImportOwnComponent } from './asymmetric/import-own/import-own.component';
+import { ImportFromComponent } from './asymmetric/import-keys/import-from/import-from.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { VerifyComponent } from './asymmetric/verify/verify.component';
     AsymmetricEncryptionComponent,
     AsymmetricDecryptionComponent,
     SignComponent,
-    VerifyComponent
+    VerifyComponent,
+    ImportOwnComponent,
+    ImportFromComponent
   ],
   imports: [
     BrowserModule,

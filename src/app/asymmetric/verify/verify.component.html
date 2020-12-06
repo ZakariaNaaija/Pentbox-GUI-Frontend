@@ -1,8 +1,8 @@
 <mdb-card-body>
   <mdb-card-title>
-    <h4>Verify Signed Message</h4>
+    <h2 id="title">Verify Signed Message</h2>
   </mdb-card-title>
-  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()">
+  <form class="form" #form="ngForm" (ngSubmit)="fingerprint && onSubmit()" (input)="success=false">
     <div class="form-group">
       <label for="message">Signed Message :</label>
 
@@ -81,6 +81,9 @@
       This message is valid and has been signed by the private key corresponding to the fingerprint:
       <div class="output">
         {{fingerprint}}
+      </div>
+      <div class="output">
+        {{algorithm}}
       </div>
     </div>
 

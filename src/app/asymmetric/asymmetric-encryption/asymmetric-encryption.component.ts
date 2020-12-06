@@ -32,7 +32,6 @@ export class AsymmetricEncryptionComponent implements OnInit {
     this.submitted = true;
     this.securityService.asymEncrypt(this.message,this.storageService.getPublicKey(this.fingerprint)).subscribe(
       data => {
-        console.log(data);
         this.result = data.result;
       },
       error => {this.errorMessage = error.message},

@@ -12,6 +12,8 @@ export class SymmetricDecryptionComponent implements OnInit {
 
   passphrase = '';
 
+  algorithm = '';
+
   submitted = false;
 
   result;
@@ -28,7 +30,7 @@ export class SymmetricDecryptionComponent implements OnInit {
   decrypt() : void {
     this.submitted = true;
     this.securityService.symDecrypt(this.message,this.passphrase).subscribe(
-      data => {this.submitted=false; this.result=data.result},
+      data => {this.submitted=false; this.result=data.result; this.algorithm = data.algorithm},
       error => {console.log(error); this.errorMessage=error.message},
     )
   }

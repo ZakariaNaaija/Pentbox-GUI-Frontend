@@ -1,69 +1,26 @@
 <mdb-card-body>
   <mdb-card-title>
-    <h4>Import Public Key</h4>
+    <h2 id="title">Import Public Key</h2>
   </mdb-card-title>
-  <form class="form" #form="ngForm" (ngSubmit)="!alreadyExists && onSubmit()">
-    <div class="form-group">
-      <label for="passphrase">Passphrase :</label>
 
-      <input
-        mdbInput
-        type="text"
-        id="fingerprint"
-        class="form-control"
-        [(ngModel)]="fingerprint"
-        placeholder="Enter the fingerprint of the public key to import"
-        name="fingerprint"
-        #fingerprintInput="ngModel"
-        required
-        [disabled]="submitted"
-        (input)="checkFingerprint($event.target.value)"
-      />
+  <nav>
+    <div class="nav nav-pills justify-content-center" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Import From Our Server</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Import Your Own Public Key</a>
     </div>
-
-    <div
-      class="alert alert-danger"
-      *ngIf="fingerprintInput.touched && fingerprintInput.invalid"
-    >
-      Please Enter the fingerprint
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <app-import-from></app-import-from>
     </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <app-import-own></app-import-own>
 
-    <div class="alert alert-danger" *ngIf="alreadyExists">
-      This fingerprint already exists
     </div>
 
 
-    <div class="d-flex justify-content-center">
-      <button
-        type="submit"
-        mdbBtn
-        id="submitButton"
-        mdbWavesEffect
-        [disabled]="form.invalid||submitted||alreadyExists"
-      >
-        Import
-      </button>
-    </div>
-    <div *ngIf="submitted" class="progress" style="position: relative;">
-      <div class="progress-bar progress-bar-striped bg-success indeterminate"></div>
-    </div>
-
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      Error : {{errorMessage}}
-    </div>
-
-    <div *ngIf="success&&!submitted" class="alert alert-success">
-      Public Key Imported Successfully: <br>
-      Fingerprint:
-      <div class="output">
-       {{fingerprint}}
-      </div>
-      Public Key :
-      <div class="output">
-        {{publicKey}}
-      </div>
-    </div>
-  </form>
 
 
+
+</div>
 </mdb-card-body>

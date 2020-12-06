@@ -19,6 +19,8 @@ export class VerifyComponent implements OnInit {
 
   errorMessage = '';
 
+  algorithm = '';
+
   result: boolean;
   constructor(
     private storageService: StorageService,
@@ -33,6 +35,7 @@ export class VerifyComponent implements OnInit {
     this.securityService.verify(this.message,this.storageService.getPublicKey(this.fingerprint)).subscribe(
       data => {
         this.result = data.result;
+        this.algorithm = data.algorithm;
       },
       error => {this.errorMessage = error.message},
       () => {this.submitted= false; this.success = true;}

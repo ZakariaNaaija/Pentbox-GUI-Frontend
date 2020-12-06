@@ -1,8 +1,8 @@
 <mdb-card-body>
   <mdb-card-title>
-    <h4>Key Generation</h4>
+    <h2 id="title">Key Generation</h2>
   </mdb-card-title>
-  <form class="form" #form="ngForm" (ngSubmit)="onSubmit()">
+  <form class="form" #form="ngForm" (ngSubmit)="onSubmit()" (input)="success=false">
     <div class="form-group">
       <label for="passphrase">Passphrase :</label>
 
