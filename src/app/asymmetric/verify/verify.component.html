@@ -78,13 +78,7 @@
     </div>
 
     <div *ngIf="success&&result==true" class="alert alert-success">
-      This message is valid and has been signed by the private key corresponding to the fingerprint:
-      <div class="output">
-        {{fingerprint}}
-      </div>
-      <div class="output">
         {{algorithm}}
-      </div>
     </div>
 
     <div *ngIf="success&&result==false" class="alert alert-danger">
