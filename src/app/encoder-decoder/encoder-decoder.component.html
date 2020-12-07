@@ -6,13 +6,29 @@
       </mdb-card-title>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <input mdbInput type="text" id="word" class="form-control" [(ngModel)]="word" placeholder="type the word here">
+          <textarea
+          mdbInput
+          type="text"
+          id="word"
+          class="form-control"
+          [(ngModel)]="word"
+          placeholder="Enter the message to encode/decode here"
+          name="word"
+          required
+          rows=5
+        ></textarea>
         </div>
         <div class="actions form-group col-md-12">
-            <button type="button" (click)="encoder()" mdbBtn id="encode" mdbWavesEffect>Encode</button>
-            <button type="button" (click)="decoder()" mdbBtn id="decode" mdbWavesEffect>Decode</button>
+            <button [disabled]="!word || word==''" type="button" (click)="encoder()" mdbBtn id="encode" mdbWavesEffect>Encode</button>
+            <button [disabled]="!word || word==''" type="button" (click)="decoder()" mdbBtn id="decode" mdbWavesEffect>Decode</button>
         </div>
-        <h4 *ngIf="encodedWord || decodedWord">Your results are ready: <mdb-badge>{{encodedWord ||decodedWord}}</mdb-badge></h4>
+        <div *ngIf="encodedWord || decodedWord" class="alert alert-success">
+          Results:
+          <div class="output" >{{encodedWord || decodedWord}}</div>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          Error : {{errorMessage}}
+        </div>
     </div>
     </mdb-card-body>
   </mdb-card>

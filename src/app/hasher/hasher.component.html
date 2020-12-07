@@ -3,22 +3,39 @@
 <mdb-card>
     <mdb-card-body>
       <mdb-card-title>
-        <h2 id="title">Hashage</h2>
+        <h2 id="title">Hash Encrypt</h2>
       </mdb-card-title>
+   
       <div class="form-row">
-        <div class="form-group col-md-6">
-          <input mdbInput type="text" id="word" class="form-control" [(ngModel)]="word" placeholder="type the word here">
+        <div class="form-group col-md-12">
+          <textarea
+          mdbInput
+          type="text"
+          id="word"
+          class="form-control"
+          [(ngModel)]="word"
+          placeholder="Enter the message to hash here"
+          name="word"
+          required
+          rows=5
+        ></textarea>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
             <select [(ngModel)]="algorithm" class="browser-default custom-select">
               <option selected>Select Algorithm</option>
               <option *ngFor="let algorithm of algorithms" [value]="algorithm">{{algorithm}}</option>
             </select>
           </div>
         <div class="actions form-group col-md-12">
-            <button type="button" mdbBtn id="hasher" (click)="hasher()" mdbWavesEffect>Hasher</button>
+            <button [disabled]="algorithm == 'Select Algorithm'" type="button" mdbBtn id="hasher" (click)="hasher()" mdbWavesEffect>Hash</button>
         </div>
-        <h4 *ngIf="hashedWord">Your results are ready: <mdb-badge>{{hashedWord}}</mdb-badge></h4>
+        <div *ngIf="hashedWord" class="alert alert-success">
+          Hashed message:
+          <div class="output" >{{hashedWord}}</div>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          Error : {{errorMessage}}
+        </div>
     </div>
     </mdb-card-body>
   </mdb-card>

@@ -26,6 +26,7 @@ password:string;
 crackedPassword:string;
 attackChoice:string="Select Attack Type";
 notfound;
+errorMessage;
 loading=false;
 cracker(){
   this.loading=true;
@@ -39,7 +40,8 @@ cracker(){
       this.crackedPassword=crackedPassword.password;
     }
     this.loading=false;
-  });
+  },error => {this.errorMessage = error.message},);
+
   
 }
 

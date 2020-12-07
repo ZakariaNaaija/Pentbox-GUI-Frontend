@@ -19,11 +19,15 @@ export class HasherComponent implements OnInit {
   }
   word:string;
   hashedWord:string;
+  errorMessage;
+  
   algorithm:string="Select Algorithm";
   hasher(){
+  
     this.securityService.hash(this.word,this.algorithm).subscribe((hashedWord)=>{
       this.hashedWord=hashedWord.hash;
-    });
+
+    },error => {this.errorMessage = error.message},);
     
   }
 }

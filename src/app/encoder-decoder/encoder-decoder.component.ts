@@ -15,18 +15,20 @@ export class EncoderDecoderComponent implements OnInit {
   word:string;
   encodedWord:string;
   decodedWord:string;
-
+  errorMessage:string;
   encoder(){
     this.securityService.encoder(this.word).subscribe((encodedWord)=>{
       this.encodedWord=encodedWord.result;
-    });
-    
+      this.errorMessage="";
+    },
+    (error) => {this.errorMessage = error.statusText});
   }
 
   decoder(){
     this.securityService.decoder(this.word).subscribe((decodedWord)=>{
       this.encodedWord=decodedWord.result;
-    });
-    
+      this.errorMessage="";
+    },
+    (error) => {this.errorMessage = error.statusText});
   }
 }
