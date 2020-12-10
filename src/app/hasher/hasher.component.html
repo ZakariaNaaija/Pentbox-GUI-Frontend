@@ -29,9 +29,7 @@
         <div class="actions form-group col-md-12">
             <button [disabled]="algorithm == 'Select Algorithm' || loading" type="button" mdbBtn id="hasher" (click)="hasher()" mdbWavesEffect>Hash</button>
         </div>
-        <div *ngIf="loading" class="progress" style="position: relative;">
-          <div class="progress-bar progress-bar-striped indeterminate"></div>
-       </div>
+        
         <div *ngIf="hashedWord" class="alert alert-success">
           Hashed message:
           <div class="output" >{{hashedWord}}</div>
@@ -40,5 +38,8 @@
           Error : {{errorMessage}}
         </div>
     </div>
+    <div *ngIf="loading" class="progress" style="position: relative;">
+      <div class="progress-bar progress-bar-striped indeterminate"></div>
+   </div>
     </mdb-card-body>
   </mdb-card>
