@@ -16,18 +16,27 @@ export class EncoderDecoderComponent implements OnInit {
   encodedWord:string;
   decodedWord:string;
   errorMessage:string;
+  loading;
   encoder(){
+    this.loading=true;
     this.securityService.encoder(this.word).subscribe((encodedWord)=>{
       this.encodedWord=encodedWord.result;
       this.errorMessage="";
+      this.loading=false;
     },
     (error) => {this.errorMessage = error.statusText});
   }
 
   decoder(){
+    this.loading=true;
     this.securityService.decoder(this.word).subscribe((decodedWord)=>{
-      this.encodedWord=decodedWord.result;
+      this.decodedWord=decodedWord.result;
       this.errorMessage="";
+      if(this.decodedWord == null){
+        this.errorMessage = "String can't be decoded"
+      }
+
+      this.loading=false;
     },
     (error) => {this.errorMessage = error.statusText});
   }

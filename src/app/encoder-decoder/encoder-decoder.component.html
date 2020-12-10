@@ -1,4 +1,4 @@
-<a routerLink="/"  mdbBtn class="back" mdbWavesEffect>< Main</a>
+<a routerLink="/"  mdbBtn class="back" mdbWavesEffect>< Menu</a>
 <mdb-card>
     <mdb-card-body>
       <mdb-card-title>
@@ -19,15 +19,18 @@
         ></textarea>
         </div>
         <div class="actions form-group col-md-12">
-            <button [disabled]="!word || word==''" type="button" (click)="encoder()" mdbBtn id="encode" mdbWavesEffect>Encode</button>
-            <button [disabled]="!word || word==''" type="button" (click)="decoder()" mdbBtn id="decode" mdbWavesEffect>Decode</button>
+            <button [disabled]="!word || word=='' || loading" type="button" (click)="encoder()" mdbBtn id="encode" mdbWavesEffect>Encode</button>
+            <button [disabled]="!word || word=='' || loading" type="button" (click)="decoder()" mdbBtn id="decode" mdbWavesEffect>Decode</button>
+        </div>
+        <div *ngIf="loading" class="progress" style="position: relative;">
+          <div class="progress-bar progress-bar-striped indeterminate"></div>
         </div>
         <div *ngIf="encodedWord || decodedWord" class="alert alert-success">
           Results:
           <div class="output" >{{encodedWord || decodedWord}}</div>
         </div>
         <div *ngIf="errorMessage" class="alert alert-danger">
-          Error : {{errorMessage}}
+          Error : {{errorMessage }}
         </div>
     </div>
     </mdb-card-body>

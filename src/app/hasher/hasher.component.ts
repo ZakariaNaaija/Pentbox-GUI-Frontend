@@ -20,12 +20,13 @@ export class HasherComponent implements OnInit {
   word:string;
   hashedWord:string;
   errorMessage;
-  
+  loading;
   algorithm:string="Select Algorithm";
   hasher(){
-  
+    this.loading=true;
     this.securityService.hash(this.word,this.algorithm).subscribe((hashedWord)=>{
       this.hashedWord=hashedWord.hash;
+      this.loading=false;
 
     },error => {this.errorMessage = error.message},);
     
